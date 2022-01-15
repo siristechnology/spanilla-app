@@ -1,26 +1,20 @@
 import React from 'react'
-import { Alert } from 'react-native'
-import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper'
-import Header from './Header'
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import HomeScreen from './Home'
+import ArticleDetailScreen from './ArticleDetail'
 
-const LeftContent = (props) => <Avatar.Icon {...props} icon="folder" />
+const Stack = createNativeStackNavigator()
 
-const App = () => (
-	<>
-		<Header />
-		<Card>
-			<Card.Title title="Card Title" subtitle="Card Subtitle" left={LeftContent} />
-			<Card.Content>
-				<Title>Card title</Title>
-				<Paragraph>Card content</Paragraph>
-			</Card.Content>
-			<Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
-			<Card.Actions>
-				<Button onPress={() => Alert.alert('Card Title')}> Cancel</Button>
-				<Button>Ok</Button>
-			</Card.Actions>
-		</Card>
-	</>
-)
+const App = () => {
+	return (
+		<NavigationContainer>
+			<Stack.Navigator initialRouteName="Home">
+				<Stack.Screen name="Home" component={HomeScreen} options={{ title: 'Spanilla' }} />
+				<Stack.Screen name="ArticleDetail" component={ArticleDetailScreen} />
+			</Stack.Navigator>
+		</NavigationContainer>
+	)
+}
 
 export default App
