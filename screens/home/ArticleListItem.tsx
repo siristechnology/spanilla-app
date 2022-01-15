@@ -4,7 +4,7 @@ import { Avatar, Card, Paragraph } from 'react-native-paper'
 
 const ArticleListItem = ({ navigation, article }) => {
 	return (
-		<Card onPress={() => navigation.navigate('ArticleDetail')}>
+		<Card onPress={() => navigation.navigate('ArticleDetail', { article })}>
 			<Card.Cover source={{ uri: article.lead_image_url }} />
 			<Card.Title
 				title={article.title}
@@ -19,7 +19,7 @@ const ArticleListItem = ({ navigation, article }) => {
 	)
 }
 
-const getRelativeTime = (date) => {
+export const getRelativeTime = (date) => {
 	return moment(Number(date)).startOf('hour').fromNow()
 }
 
