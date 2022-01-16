@@ -15,7 +15,8 @@
     "test-detox-android": "detox test -c android.emu.debug",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "lint:fix": "eslint --fix . --ext .js,.jsx,.ts,.tsx"
+    "lint:fix": "eslint --fix . --ext .js,.jsx,.ts,.tsx",
+    "preinstall": "node tools/preinstall-script.js"
   },
   "dependencies": {
     "@apollo/client": "3.4.16",
