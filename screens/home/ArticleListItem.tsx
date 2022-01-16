@@ -19,9 +19,12 @@ const ArticleListItem = ({ navigation, article }) => {
 							subtitle={getRelativeTime(article.date_published || article.date_modified)}
 							titleNumberOfLines={4}
 							left={() => <Avatar.Image size={40} source={{ uri: article.source.logoLink }} />}
+							style={tw`mt-1 mb-1`}
 						/>
 						<Card.Content>
-							<Paragraph>{article.translated_content[0].substring(0, 100) + '...'}</Paragraph>
+							<Paragraph style={tw`mb-2`}>
+								{article.translated_content[0].substring(0, 100) + '...'}
+							</Paragraph>
 						</Card.Content>
 					</View>
 				</TouchableRipple>

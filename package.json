@@ -26,9 +26,11 @@
     "moment": "^2.29.1",
     "react": "17.0.2",
     "react-native": "0.66.4",
+    "react-native-linear-gradient": "^2.5.6",
     "react-native-paper": "^4.11.2",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.10.1",
+    "react-native-shimmer-placeholder": "^2.0.8",
     "react-native-vector-icons": "^9.0.0",
     "react-native-webview": "^11.16.0",
     "tailwind-react-native-classnames": "^1.5.1"

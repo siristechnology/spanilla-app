@@ -26,6 +26,7 @@ const ArticleDetail = (props) => {
 						subtitle={getRelativeTime(article.date_published || article.date_modified)}
 						titleNumberOfLines={4}
 						left={() => <Avatar.Image size={40} source={{ uri: article.source.logoLink }} />}
+						style={tw`mt-1 mb-1`}
 					/>
 					<Card.Content>
 						<View>{createContentView(article.original_content, article.translated_content, colors)}</View>
