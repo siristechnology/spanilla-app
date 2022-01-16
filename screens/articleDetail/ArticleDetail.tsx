@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { ScrollView, View } from 'react-native'
 import { Avatar, Button, Card, Paragraph } from 'react-native-paper'
 import { useTheme } from 'react-native-paper'
@@ -11,10 +11,15 @@ const ArticleDetail = (props) => {
 	const { article } = props.route.params
 	const { colors } = useTheme()
 
-	const handleLinkClick = () => {
-		const link = article.url
-		navigation.navigate('ArticleWeb', { link })
-	}
+	useEffect(() => {
+		navigation.setOptions({
+			title: article.source.name,
+		})
+	}, [article.source.name, navigation])
+
+	const handleLinkClick = useCallback(() => {
+		navigation.navigate('ArticleWeb', { article })
+	}, [article, navigation])
 
 	return (
 		<SafeAreaView>

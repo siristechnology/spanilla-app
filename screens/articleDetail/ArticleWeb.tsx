@@ -1,29 +1,25 @@
-import React from 'react'
-import { StyleSheet } from 'react-native'
+import React, { useEffect } from 'react'
 import { WebView } from 'react-native-webview'
 import { ActivityIndicator } from 'react-native-paper'
+import tw from 'tailwind-react-native-classnames'
 
 const ArticleWeb = (props) => {
-	const { link } = props.route.params
+	const { navigation } = props
+	const { article } = props.route.params
+
+	useEffect(() => {
+		navigation.setOptions({
+			title: article.source.name,
+		})
+	}, [article.source.name, navigation])
 
 	return (
 		<WebView
-			renderLoading={() => <ActivityIndicator />}
+			renderLoading={() => <ActivityIndicator style={tw`flex-1 items-center`} />}
 			startInLoadingState
-			source={{ uri: link }}
-			style={{
-				flex: 1,
-			}}
+			source={{ uri: article.url }}
 		/>
 	)
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		flexDirection: 'row',
-		justifyContent: 'center',
-	},
-})
 
 export default ArticleWeb
