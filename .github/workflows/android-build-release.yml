@@ -45,7 +45,7 @@ jobs:
                   title: 'Spanilla - QA Build'
                   prerelease: false
 
-             - name: Publish Android Bundle to Google Play Store
+            - name: Publish Android Bundle to Google Play Store
               uses: r0adkll/upload-google-play@v1
               if: github.ref == 'refs/heads/release'
               with:
