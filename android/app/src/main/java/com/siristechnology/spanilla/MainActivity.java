@@ -1,4 +1,4 @@
-package com.spanilla;
+package com.siristechnology.spanilla;
 
 import android.os.Bundle;
 import com.facebook.react.ReactActivity;

@@ -1,7 +1,6 @@
-import clsx from 'clsx'
 import React from 'react'
 import { ScrollView, View } from 'react-native'
-import { Avatar, Button, Card, Paragraph, Text } from 'react-native-paper'
+import { Avatar, Button, Card, Paragraph } from 'react-native-paper'
 import { useTheme } from 'react-native-paper'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import tw from 'tailwind-react-native-classnames'
@@ -48,7 +47,7 @@ const createContentView = (original_content, translated_content, colors) => {
 			{original_content.map((item, index) => {
 				return (
 					<View key={index}>
-						<Text style={{ color: colors.primary }}>{translated_content[index]}</Text>
+						<Paragraph style={{ color: colors.primary }}>{translated_content[index]}</Paragraph>
 						<Paragraph style={tw`mb-3`}>{item}</Paragraph>
 					</View>
 				)
