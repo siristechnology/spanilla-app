@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback, useState } from 'react'
 import { FlatList } from 'react-native'
 import { ActivityIndicator } from 'react-native-paper'
 import { useQuery } from '@apollo/client'
@@ -7,9 +7,12 @@ import ArticleListItem from './ArticleListItem'
 
 const Home = ({ navigation }) => {
 	const { loading, error, refetch, data } = useQuery(FETCH_ARTICLES_QUERY)
+	const [refreshing, setRefreshing] = useState(false)
 
-	// if (loading) return 'Loading...'
-	// if (error) return `Error! ${error.message}`
+	const handleRefresh = useCallback(() => {
+		setRefreshing(true)
+		refetch().then(() => setRefreshing(false))
+	}, [])
 
 	const articles = data?.fetchArticles?.filter((article) => article.source && article.source.category === 'news')
 
@@ -21,7 +24,13 @@ const Home = ({ navigation }) => {
 		<>
 			{loading && <ActivityIndicator size="large" />}
 			{!loading && !error && articles && (
-				<FlatList data={articles} renderItem={renderItem} keyExtractor={(item) => item._id} />
+				<FlatList
+					data={articles}
+					renderItem={renderItem}
+					keyExtractor={(item) => item._id}
+					refreshing={refreshing}
+					onRefresh={handleRefresh}
+				/>
 			)}
 		</>
 	)
