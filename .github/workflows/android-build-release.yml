@@ -19,8 +19,8 @@ jobs:
             - name: Setup Node.js environment
               uses: actions/setup-node@v2.5.1
               with:
-                node-version: '16'
-                cache: 'yarn'
+                  node-version: '16'
+                  cache: 'yarn'
 
             - name: Yarn Install, Build, (Test)
               run: |
@@ -37,7 +37,7 @@ jobs:
 
             - name: Publish Apk to Github Release
               uses: marvinpinto/action-automatic-releases@latest
-              if: github.ref == 'refs/heads/master'
+              if: github.ref == 'refs/heads/main'
               with:
                   files: android/app/build/outputs/apk/signed/release/app-signed-release.apk
                   repo_token: ${{ secrets.GITHUB_TOKEN }}

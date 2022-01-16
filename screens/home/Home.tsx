@@ -16,9 +16,9 @@ const Home = ({ navigation }) => {
 
 	const articles = data?.fetchArticles?.filter((article) => article.source && article.source.category === 'news')
 
-	const renderItem = (info) => {
+	const renderItem = useCallback((info) => {
 		return <ArticleListItem navigation={navigation} article={info.item} />
-	}
+	}, [])
 
 	return (
 		<>
