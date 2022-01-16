@@ -14,11 +14,17 @@ const ArticleListItem = ({ navigation, article }) => {
 				>
 					<View>
 						<Card.Cover source={{ uri: article.lead_image_url }} style={tw`rounded-lg`} />
+						<View style={tw`ml-4 -mt-4`}>
+							<Avatar.Image
+								size={40}
+								source={{ uri: article.source.logoLink }}
+								style={tw`border-2 border-white items-center content-center overflow-hidden`}
+							/>
+						</View>
 						<Card.Title
 							title={article.title}
 							subtitle={getRelativeTime(article.date_published || article.date_modified)}
 							titleNumberOfLines={4}
-							left={() => <Avatar.Image size={40} source={{ uri: article.source.logoLink }} />}
 							style={tw`mt-1 mb-1`}
 						/>
 						<Card.Content>
