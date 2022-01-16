@@ -6,7 +6,7 @@ on:
 
 jobs:
     build:
-        runs-on: macos-latest
+        runs-on: macos-11
 
         steps:
             - uses: actions/checkout@v1
@@ -23,7 +23,7 @@ jobs:
 
             - name: Yarn Install, Build, (Test)
               run: |
-                  sh prepare_qa.sh
+                  sh prebuild_script.sh
                   yarn install --frozen-lockfile
                   yarn build
                   yarn bundle
@@ -41,5 +41,5 @@ jobs:
                   files: android/app/build/outputs/apk/signed/release/app-signed-release.apk
                   repo_token: ${{ secrets.GITHUB_TOKEN }}
                   automatic_release_tag: 'latest'
-                  title: 'Spanilla - Beta Build'
+                  title: 'Spanilla - QA Build'
                   prerelease: false
